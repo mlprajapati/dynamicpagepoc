@@ -1,7 +1,5 @@
 
 var factory = {};
-debugger
-
 
 factory.getPageLayout = function(divId) {
 
@@ -135,7 +133,7 @@ factory.headerTemplate = function(){
     let isLogin = app.getLogin();
 
     //create html layout of navigation
-    let html = '<div id="header" style="position: fixed; width: 100%;">';
+    let html = '<div id="header" style="position: fixed; width: 100%;z-index:9999;">';
 
     html += '<div class="topnav">'
     html += '<button class="icon" onclick="toggleNav()"><i class="fa fa-bars"></i></button>';
@@ -193,9 +191,9 @@ factory.contentTemplate = function(){
     //let page = app.getPageData();
     let platform = app.getPlatform();
 
-    let html = '<div id="content" style="display:block;position:relative; top: 40px; width:100%;height:100%;txt-align:center;">';
+    let html = '<div id="content" style="display:block;position:relative; top: 40px; width:100%;height:calc(100vh - 58px);txt-align:center;">';
 
-    html += '<div class="tab">';
+    html += '<div class="tab" style="overflow: hidden; text-align: center;position: fixed;">';
 
     platform.navigation.tabBar.forEach((element, index) => {
         let classTxt = '';
@@ -206,7 +204,7 @@ factory.contentTemplate = function(){
     });
 
     html += '</div>';
-    html += '<div id="tab-container">';
+    html += '<div id="tab-container" style="position: fixed;top: 90px;width: 100%;height: calc(100vh - 123px); overflow-y: auto;">';
 
     
 
