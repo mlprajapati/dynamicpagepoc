@@ -113,6 +113,9 @@ factory.footerTemplate = function(){
         html += '</div>';
         return html;
 }
+factory.setFont = function(){
+    $('head').append('<link rel="stylesheet" href="'+app.getConfig().brand.general.fontUrl+'" type="text/css" />');
+}
 factory.init = function(){
     $('#container').append(factory.headerTemplate());
     $('#container').append(factory.contentTemplate());

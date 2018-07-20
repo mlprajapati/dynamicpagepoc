@@ -1,3 +1,4 @@
+var currentPalform ='appleTv';
 var config={};
 var platform={};
 var currentPage={};
