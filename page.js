@@ -5,7 +5,7 @@ $(document).ready(function(){
         factory.setFont();
         $.when(engine.getPlatformJson(currentPalform)).then(function(data2){
             app.setPlatform(data2);
-            var page = platform.pages.find(page=> page['Page-Name'] ==='Home Page')
+            var page = app.getPlatform().pages.find(page=> page['Page-Name'] ==='Home Page');
             app.setCurrentPage(page);
             $.when(app.getPageData(page['Page-ID'])).then(function(data3){
                 app.setPageData(data3);

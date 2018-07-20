@@ -184,6 +184,8 @@ factory.setFont = function(){
 }
 factory.init = function(){
     $('body').append(factory.globalCSS());
+    engine.downloadsPages();
+    engine.downloadsBlocks();
     $('#container').append(factory.headerTemplate());
     $('#container').append(factory.contentTemplate());
     $('#container').append(factory.footerTemplate());

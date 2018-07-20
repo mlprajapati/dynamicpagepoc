@@ -4,7 +4,9 @@ var platform={};
 var currentPage={};
 var pageData={};
 var isLogin = true;
-
+var isLocal=true;
+var applicationVerion='0.9422.0';
+var identity ='poc1';
 var loadData = function(url,type,data){
     var jqXhr = $.ajax({
         url: url,
@@ -40,6 +42,8 @@ var app = {
     },
     getLogin: function() {
         return isLogin;
+        return engine.getPageJson(pageid);
+
     }
 
 
