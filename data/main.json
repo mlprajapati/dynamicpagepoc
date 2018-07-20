@@ -56,7 +56,7 @@
     },
     "brand": {
       "general": {
-        "backgroundColor": "#000000",
+        "backgroundColor": "#000",
         "blockTitleColor": "#008ee0",
         "fontFamily": "Open Sans",
         "pageTitleColor": "#008ee0",

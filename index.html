@@ -8,7 +8,41 @@
         <script src="engine.js"></script>
         <script src="factory.js"></script>
         <script src="page.js"></script>
+        <style>
+           
+.tab {
+    overflow: hidden;
+    text-align: center;
+}
+
+.tab a {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    display: inline-block;
+}
+
+.tab a.active {
+    border-top: 2px solid #ff0000;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tabcontent:first-child {
+    display: block;
+}
+        </style>
     </head>
+
     <body>
         <div id="container">
     

@@ -55,7 +55,10 @@ var app = {
 
     },
     getComponent: function(comp){
-        return engin.getComponentJson(comp);
+        return engine.getComponentJson(comp);
+    },
+    getCurrentPlatform: function() {
+        return getCurrentPlatform;
     }
 
 

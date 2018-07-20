@@ -1,27 +1,42 @@
 
 var factory = {};
+debugger
 
-factory.getPageLayout = function(dataObj, pageId) {
 
-    let pageType = 'appleTv';
-    let moduleArr = dataObj['moduleList'];
+factory.getPageLayout = function(divId) {
+
+    let currentPage = app.getCurrentPage();
     let html = '';
 
-    html += factory.getNavigation(mainContent);
 
-    moduleArr.forEach(element => {
+    app.getPageData(currentPage['Page-ID']).done(resp => {
+        let pageType = currentPalform;
+        let moduleArr = resp['moduleList'];
         
-        switch(element.blockName) {
-            case 'carousel01': html += factory.carousalTemplate(element, pageType);
-                        break;
 
-            case 'footer01': html += factory.footerTemplate(element, pageType, mainContent);
-                        break;
-        }
+        moduleArr.forEach(element => {
+            
+            switch(element.blockName) {
+                case 'carousel01': html += factory.carousalTemplate(element, pageType);
+                            $('#'+divId).append(html);
+                            app.getComponent(element.blockName).done(resp => {
+                                
+                                    $('#'+element.blockName).append(resp);
+                               
+                                
+                            }).fail((xhr) => {
+                                $('#'+element.blockName).append('<h2>'+ element.blockName +' not found!</h2>');
+                            });
+                            break;
+
+                
+            }
+            
+        });
+
         
     });
-
-    return html;
+    
 }
 
 factory.getStyles = function(obj) {
@@ -86,7 +101,10 @@ factory.getNavigation = function(content) {
 
 
 factory.carousalTemplate = function(obj, pageType) {
-    let html = '<div id="carousal"' + factory.getStyles(obj.layout[pageType]) + '>';
+    let html = '<div id="'+ obj.blockName +'"' + factory.getStyles(obj.layout[pageType.toLowerCase()]) + '>';
+
+
+
         html += '</div>';
 
         return html;
@@ -98,17 +116,17 @@ factory.globalCSS = function() {
     let html = '<style>';
 
     html += 'body{ padding: 0px; margin: 0px; box-sizing: border-box; }';
+    html += '.pull-right { float: right; }';
     html += 'a { color: ' + config.brand.link.textColor + '; text-decoration: none; }';
     html += 'a:hover { color: ' + config.brand['link--hover'].textColor + '; text-decoration: none; }';
-    html += '.topnav{background-color:#333;overflow:hidden}.topnav button{display:block;padding:10px;outline:0;border:none;font-size:17px;float:left}.dropdown a.link{display:none;padding:10px}.topnav.responsive{position:relative}.dropdown.active{position:absolute;z-index:99;width:25%}.dropdown.active a{float:none;display:block;text-align:left}.topnav.responsive .icon{position:absolute;left:0;top:0}#site-name{margin:0;float:left;padding:9px}#header .user{float:right;margin:0}#header .user a{float:left;margin-left:10px;padding:9px}';
+    html += '.topnav{background-color:#333;overflow:hidden}.topnav button{display:block;padding:10px;outline:0;border:none;font-size:17px;float:left}.dropdown{z-index: 99;}.dropdown a.link{display:none;padding:10px}.topnav.responsive{position:relative}.dropdown.active{position:absolute;z-index:99;width:25%}.dropdown.active a{float:none;display:block;text-align:left}.topnav.responsive .icon{position:absolute;left:0;top:0}#site-name{margin:0;float:left;padding:9px}#header .user{float:right;margin:0}#header .user a{float:left;margin-left:10px;padding:9px}.footer-links{margin:7px}.footer-links a{ margin-right: 25px;}';
 
+    html += '#content { color: ' + config.brand.general.textColor + '; background: ' + config.brand.general.backgroundColor + ';}';
     html += '#footer { color: ' + config.brand.footer.textColor + '; background: ' + config.brand.footer.backgroundColor + ';}';
 
     html += '</style>';
     return html;
 }
-
-
 
 factory.headerTemplate = function(){
 
@@ -117,12 +135,11 @@ factory.headerTemplate = function(){
     let isLogin = app.getLogin();
 
     //create html layout of navigation
-    let html = '<div id="header">';
+    let html = '<div id="header" style="position: fixed; width: 100%;">';
 
     html += '<div class="topnav">'
     html += '<button class="icon" onclick="toggleNav()"><i class="fa fa-bars"></i></button>';
     html += '<h3 id="site-name"><a href="/">' + config.site + '</a></h3>';
-    
     
     //user links
     html += '<div class="user">';
@@ -135,7 +152,8 @@ factory.headerTemplate = function(){
     html += '</div>';
     html += '</div>';
 
-    html += '<div class="dropdown" id="nav-dropdown">'
+    html += '<div class="dropdown" id="nav-dropdown">';
+
     platform.navigation.primary.forEach(element => {
         let classText = '';
         if (element.title == 'Home') {
@@ -169,25 +187,67 @@ factory.headerTemplate = function(){
 
     return html;
 }
+
 factory.contentTemplate = function(){
-    let html = '<div id="content" style="dispaly:block;position:relative;width:100%;height:calc(100vh - 75px);">';
-        html += '</div>';
-        return html;
+
+    //let page = app.getPageData();
+    let platform = app.getPlatform();
+
+    let html = '<div id="content" style="display:block;position:relative; top: 40px; width:100%;height:100%;txt-align:center;">';
+
+    html += '<div class="tab">';
+
+    platform.navigation.tabBar.forEach((element, index) => {
+        let classTxt = '';
+        if (index == 0) {
+            classTxt = ' active';
+        }
+        html += '<a id="" href="javascript://" class="tablinks'+ classTxt +'" onclick="openTab(event, \'' + element.title +'\')">' + element.title +'</a>';
+    });
+
+    html += '</div>';
+    html += '<div id="tab-container">';
+
+    
+
+    platform.navigation.tabBar.forEach(element => {
+        html += '<div id="'+ element.title +'" class="tabcontent"></div>';
+    });
+
+    html += '</div>'
+    
+
+    html += '</div>';
+    return html;
 }
+
 factory.footerTemplate = function(){
-    let html = '<div id="footer" style="dispaly:block;position:relative;bottom:0px;width:100%;height:35px;">';
-        html += '</div>';
-        return html;
+    let platform = app.getPlatform();
+    let html = '<div id="footer" style="display:block;position:fixed;bottom:0px;width:100%;height:35px;">';
+    
+    html += '<div class="pull-right footer-links">';
+
+    platform.navigation.footer.forEach(element => {
+        html += '<a href="' + element.url + '" class="link">'+ element.title + '</a>';
+    });  
+
+    html += '</div>';
+    html += '</div>';
+    return html;
 }
+
 factory.setFont = function(){
     $('head').append('<link rel="stylesheet" href="'+app.getConfig().brand.general.fontUrl+'" type="text/css" />');
 }
+
 factory.init = function(){
     $('body').append(factory.globalCSS());
     engine.downloadsPages();
     engine.downloadsBlocks();
     $('#container').append(factory.headerTemplate());
     $('#container').append(factory.contentTemplate());
+    let firstTab = app.getPlatform().navigation.tabBar[0].title;
+    factory.getPageLayout(firstTab);
     $('#container').append(factory.footerTemplate());
 
 }
@@ -200,4 +260,19 @@ function toggleNav() {
     } else {
         x.className = "dropdown";
     }
+}
+
+
+function openTab(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
 }
