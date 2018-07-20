@@ -103,6 +103,21 @@ var engine = {
             console.log(responses);
         });
     },
+    getComponentJson(comp){
+        if (localStorage.getItem(identity + "_" + comp + ".json")) {
+            return $.when(JSON.parse(localStorage.getItem(identity + "_" + comp + ".json")));
+        } else {
+            var blocksBaseUrl = app.getPlatform().blocksBaseUrl;
+            let url = '';
+            if (isLocal) {
+                url = 'data/' + comp + '.json'
+            } else {
+                url = blocksBaseUrl+'/'+ comp;
+            }
+            return loadData(url + '.json', 'GET', {})
+               
+        }
+    },
     // This methos will remove the all data from cache based on the prefix.
     removeAllDataFromCache: function (pref, newName) {
         for (var key in localStorage) {

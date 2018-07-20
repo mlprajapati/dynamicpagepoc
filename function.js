@@ -53,6 +53,9 @@ var app = {
         return isLogin;
         return engine.getPageJson(pageid);
 
+    },
+    getComponent: function(comp){
+        return engin.getComponentJson(comp);
     }
 
 
