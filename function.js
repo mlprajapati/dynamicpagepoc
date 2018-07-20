@@ -17,12 +17,18 @@ var loadData = function(url,type,data){
 };
 var app = {
     setConfig:function(value){
+        if (!localStorage.getItem(identity + "_main.json")) {
+            localStorage.setItem(identity + "_main.json", JSON.stringify(value));
+        }
         config = value;
     },
     getConfig:function(){
         return config;
     },
     setPlatform:function(value){
+        if (!localStorage.getItem(identity + "_" + currentPalform + ".json")) {
+            localStorage.setItem(identity + "_" + currentPalform + ".json", JSON.stringify(value));
+        }
         platform = value;
     },
     getPlatform:function(){
@@ -34,7 +40,10 @@ var app = {
     getCurrentPage: function(){
         return currentPage;
     },
-    setPageData: function(value){
+    setPageData: function(pageId,value){
+        if (!localStorage.getItem(identity + "_" + pageId + ".json")) {
+            localStorage.setItem(identity + "_" + pageId + ".json", JSON.stringify(value));
+        }
         pageData = value;
     },
     getPageData: function(pageid){

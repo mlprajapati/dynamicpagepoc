@@ -10,25 +10,17 @@ var engine = {
         if (localStorage.getItem(identity + "_main.json")) {
             let config = JSON.parse(localStorage.getItem(identity + "_main.json"));
             if (config['version'] == applicationVerion) {
-                return config;
+                return $.when(config);
             }
         }
-        debugger
         engine.removeAllDataFromCache(identity + '_', '');
-        loadData(url, 'GET', {})
-            .done(function (data) {
-                localStorage.setItem(identity + "_main.json", JSON.stringify(data));
-                return data;
-            })
-            .fail(function (xhr) {
-                alert("main.Json failed to download");
-                return {};
-            });
-
+        return loadData(url, 'GET', {});
+           
     },
     getPlatformJson: function (platform) {
+  
         if (localStorage.getItem(identity + "_" + platform + ".json")) {
-            return JSON.parse(localStorage.getItem(identity + "_" + platform + ".json"));
+            return $.when(JSON.parse(localStorage.getItem(identity + "_" + platform + ".json")));
         } else {
             let url = '';
             if (isLocal) {
@@ -36,21 +28,14 @@ var engine = {
             } else {
                 url = app.getConfig()[platform];
             }
-            loadData(url, 'GET', {})
-                .done(function (data) {
-                    localStorage.setItem(identity + "_" + platform + ".json", JSON.stringify(data));
-                    return data;
-                })
-                .fail(function (xhr) {
-                    alert("platform.Json failed to download");
-                    return {};
-                })
+           return loadData(url, 'GET', {});
+               
         }
 
     },
     getPageJson: function (pageId) {
         if (localStorage.getItem(identity + "_" + pageId + ".json")) {
-            return JSON.parse(localStorage.getItem(identity + "_" + pageId + ".json"));
+            return $.when(JSON.parse(localStorage.getItem(identity + "_" + pageId + ".json")));
         } else {
             let url = '';
             if (isLocal) {
@@ -58,15 +43,8 @@ var engine = {
             } else {
                 url = app.getPlatform().pages.find(page => page['Page-ID'] === pageId)['Page-ID'];
             }
-            loadData('data/' + pageId + '.json', 'GET', {})
-                .done(function (data) {
-                    localStorage.setItem(identity + "_" + pageId + ".json", JSON.stringify(data));
-                    return data;
-                })
-                .fail(function (xhr) {
-                    alert(pageId + ".Json failed to download");
-                    return {};
-                })
+            return loadData('data/' + pageId + '.json', 'GET', {})
+               
         }
 
     },

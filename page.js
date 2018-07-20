@@ -1,14 +1,14 @@
 
 $(document).ready(function(){
-    $.when(engine.getMainJson()).then(function(data){
+    engine.getMainJson().done(function(data){
         app.setConfig(data);
         factory.setFont();
-        $.when(engine.getPlatformJson(currentPalform)).then(function(data2){
+        engine.getPlatformJson(currentPalform).done(function(data2){
             app.setPlatform(data2);
             var page = app.getPlatform().pages.find(page=> page['Page-Name'] ==='Home Page');
             app.setCurrentPage(page);
-            $.when(app.getPageData(page['Page-ID'])).then(function(data3){
-                app.setPageData(data3);
+            app.getPageData(page['Page-ID']).done(function(data3){
+                app.setPageData(page['Page-ID'],data3);
                 factory.init();
             });
         });
