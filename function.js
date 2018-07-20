@@ -3,6 +3,8 @@ var config={};
 var platform={};
 var currentPage={};
 var pageData={};
+var isLogin = true;
+
 var loadData = function(url,type,data){
     var jqXhr = $.ajax({
         url: url,
@@ -35,7 +37,11 @@ var app = {
     },
     getPageData: function(pageid){
         return engine.getPlatformJson(pageid);
-
+    },
+    getLogin: function() {
+        return isLogin;
     }
+
+
 
 }

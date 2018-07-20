@@ -1,1 +1,183 @@
-{"id":"00000149-86ec-d4f3-a7e9-e6fe760d0000","templateName":"Entertainment","accessKey":"NTMUBHGZLWBVZXSGXQJL","apiBaseUrl":"https://prod-api.basecompanyname.com","pageEndpoint":"/content/pages","timestamp":1531413829920,"internalName":"companyname","apiKeys":[{"name":"companyname_key","apiKey":"7arSnLdRpj8mtRj5Ruv0V1GK9PE0zOyC76KcfTi8"}],"faqUrl":"www.companyname.com/faq","beacon":{"siteName":"Site Name Online","clientId":"00000149-86ec-d4f3-a7e9-e6fe760d0000","apiBaseUrl":"https://11aa7ahu122g.execute-api.us-east-1.amazonaws.com/production_beacon/firehouse-proxy"},"companyName":"Company Name","site":"Site Name Online","serviceType":"AVOD","domainName":"www.server.com","domainNames":["www.server.com","embed.companyname.com"],"apiBaseUrlCached":"https://prod-aapi-cached.basecompanyname.com","socialMedia":{"instagram":{"url":"https://www.instagram.com/companyname/"},"facebook":{"url":"https://www.facebook.com/companyname","appId":"227991737252697"},"youtube":{"url":"https://www.youtube.com/user/companyname"},"googlePlus":{"signin":true}},"appVersions":{"ios":{"minimum":"2.0.1","latest":"2.3.1","updateUrl":"https://itunes.apple.com/us/app/hoichoi-bengali-movies/id118875554000?ls=1&mt=8"},"android":{"minimum":"1.0.31","latest":"1.0.33","updateUrl":"https://play.google.com/store/apps/details?id=air.com.companyname"}},"brand":{"general":{"backgroundColor":"#000000","blockTitleColor":"#008ee0","fontFamily":"Open Sans","pageTitleColor":"#008ee0","fontUrl":"https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i","textColor":"#ffffff"},"cta":{"secondary":{"border":{"color":"#008ee0","width":"1px"},"backgroundColor":"#008ee0","textColor":"#ffffff"},"primary--hover":{"border":{"color":"#008ee0","width":"1px"},"backgroundColor":"#008ee0","textColor":"#ffffff"},"secondary--hover":{"border":{"color":"#008ee0","width":"1px"},"backgroundColor":"#008ee0","textColor":"#ffffff"},"primary":{"border":{"color":"#008ee0","width":"1px"},"backgroundColor":"#008ee0","textColor":"#ffffff"}},"link--hover":{"textColor":"#ffffff"},"navigation":{"link--hover":{"backgroundColor":"#000000","style":["bold"],"textColor":"#ffffff"},"link--active":{"backgroundColor":"#000000","style":["bold"]},"dropdown--active":{"backgroundColor":"#000000","textColor":"#ffffff"},"link":{"backgroundColor":"#000000","style":["bold"],"textColor":"#ffffff"},"dropdown--hover":{"backgroundColor":"#000000","textColor":"#ffffff"},"dropdown":{"backgroundColor":"#000000","textColor":"#ffffff"}},"footer":{"backgroundColor":"#1e2023","textColor":"#868788"},"link":{"textColor":"#ffffff"},"themeId":"07"},"images":{"placeholderPoster":"https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/images/generated/placeholder-poster.png","placeholderCover":"https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/images/generated/placeholder-cover.png"},"customerService":{"email":"feedback@companyname.com"},"emailFeedbackTech":"feedback@companyname.com","version":"0.9422.0","Web":"https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/web.json?version=0.9422.0","iOS":"https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/ios.json?version=0.9422.0","Android":"https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/android.json?version=0.9422.0","xbox":"https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/xbox.json?version=0.9422.0","roku":"https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/roku.json?version=0.9422.0","appleTv":"https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/appleTv.json?version=0.9422.0","fireTv":"https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/fireTv.json?version=0.9422.0","windows10Desktop":"https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/windows10Desktop.json?version=0.9422.0","forceLogin":false,"isDownloadable":true,"features":{"mobile_app_downloads":true,"user_content_rating":true,"enable_mini_player":true,"navigation":"top","free_preview":{"isFreePreview":false,"per_video":false,"length":{"unit":"Minutes","multiplier":"1"}},"auto_play":true,"mute_sound":false,"casting":true,"trick_play":false}}
+{
+    "id": "00000149-86ec-d4f3-a7e9-e6fe760d0000",
+    "templateName": "Entertainment",
+    "accessKey": "NTMUBHGZLWBVZXSGXQJL",
+    "apiBaseUrl": "https://prod-api.basecompanyname.com",
+    "pageEndpoint": "/content/pages",
+    "timestamp": 1531413829920,
+    "internalName": "companyname",
+    "apiKeys": [
+      {
+        "name": "companyname_key",
+        "apiKey": "7arSnLdRpj8mtRj5Ruv0V1GK9PE0zOyC76KcfTi8"
+      }
+    ],
+    "faqUrl": "www.companyname.com/faq",
+    "beacon": {
+      "siteName": "Site Name Online",
+      "clientId": "00000149-86ec-d4f3-a7e9-e6fe760d0000",
+      "apiBaseUrl": "https://11aa7ahu122g.execute-api.us-east-1.amazonaws.com/production_beacon/firehouse-proxy"
+    },
+    "companyName": "Company Name",
+    "site": "Site Name Online",
+    "serviceType": "AVOD",
+    "domainName": "www.server.com",
+    "domainNames": [
+      "www.server.com",
+      "embed.companyname.com"
+    ],
+    "apiBaseUrlCached": "https://prod-aapi-cached.basecompanyname.com",
+    "socialMedia": {
+      "instagram": {
+        "url": "https://www.instagram.com/companyname/"
+      },
+      "facebook": {
+        "url": "https://www.facebook.com/companyname",
+        "appId": "227991737252697"
+      },
+      "youtube": {
+        "url": "https://www.youtube.com/user/companyname"
+      },
+      "googlePlus": {
+        "signin": true
+      }
+    },
+    "appVersions": {
+      "ios": {
+        "minimum": "2.0.1",
+        "latest": "2.3.1",
+        "updateUrl": "https://itunes.apple.com/us/app/hoichoi-bengali-movies/id118875554000?ls=1&mt=8"
+      },
+      "android": {
+        "minimum": "1.0.31",
+        "latest": "1.0.33",
+        "updateUrl": "https://play.google.com/store/apps/details?id=air.com.companyname"
+      }
+    },
+    "brand": {
+      "general": {
+        "backgroundColor": "#000000",
+        "blockTitleColor": "#008ee0",
+        "fontFamily": "Open Sans",
+        "pageTitleColor": "#008ee0",
+        "fontUrl": "https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i",
+        "textColor": "#ffffff"
+      },
+      "cta": {
+        "secondary": {
+          "border": {
+            "color": "#008ee0",
+            "width": "1px"
+          },
+          "backgroundColor": "#008ee0",
+          "textColor": "#ffffff"
+        },
+        "primary--hover": {
+          "border": {
+            "color": "#008ee0",
+            "width": "1px"
+          },
+          "backgroundColor": "#008ee0",
+          "textColor": "#ffffff"
+        },
+        "secondary--hover": {
+          "border": {
+            "color": "#008ee0",
+            "width": "1px"
+          },
+          "backgroundColor": "#008ee0",
+          "textColor": "#ffffff"
+        },
+        "primary": {
+          "border": {
+            "color": "#008ee0",
+            "width": "1px"
+          },
+          "backgroundColor": "#008ee0",
+          "textColor": "#ffffff"
+        }
+      },
+      "link--hover": {
+        "textColor": "#ffffff"
+      },
+      "navigation": {
+        "link--hover": {
+          "backgroundColor": "#fff",
+          "style": [
+            "bold"
+          ],
+          "textColor": "#000"
+        },
+        "link--active": {
+          "backgroundColor": "#000000",
+          "style": [
+            "bold"
+          ]
+        },
+        "dropdown--active": {
+          "backgroundColor": "#000000",
+          "textColor": "#ffffff"
+        },
+        "link": {
+          "backgroundColor": "#000000",
+          "style": [
+            "bold"
+          ],
+          "textColor": "#ffffff"
+        },
+        "dropdown--hover": {
+          "backgroundColor": "#fff",
+          "textColor": "#000"
+        },
+        "dropdown": {
+          "backgroundColor": "#000000",
+          "textColor": "#ffffff"
+        }
+      },
+      "footer": {
+        "backgroundColor": "#1e2023",
+        "textColor": "#868788"
+      },
+      "link": {
+        "textColor": "#ffffff"
+      },
+      "themeId": "07"
+    },
+    "images": {
+      "placeholderPoster": "https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/images/generated/placeholder-poster.png",
+      "placeholderCover": "https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/images/generated/placeholder-cover.png"
+    },
+    "customerService": {
+      "email": "feedback@companyname.com"
+    },
+    "emailFeedbackTech": "feedback@companyname.com",
+    "version": "0.9422.0",
+    "Web": "https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/web.json?version=0.9422.0",
+    "iOS": "https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/ios.json?version=0.9422.0",
+    "Android": "https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/android.json?version=0.9422.0",
+    "xbox": "https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/xbox.json?version=0.9422.0",
+    "roku": "https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/roku.json?version=0.9422.0",
+    "appleTv": "https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/appleTv.json?version=0.9422.0",
+    "fireTv": "https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/fireTv.json?version=0.9422.0",
+    "windows10Desktop": "https://appcms.basecompanyname.com/00000149-86ec-d4f3-a7e9-e6fe760d0000/windows10Desktop.json?version=0.9422.0",
+    "forceLogin": false,
+    "isDownloadable": true,
+    "features": {
+      "mobile_app_downloads": true,
+      "user_content_rating": true,
+      "enable_mini_player": true,
+      "navigation": "top",
+      "free_preview": {
+        "isFreePreview": false,
+        "per_video": false,
+        "length": {
+          "unit": "Minutes",
+          "multiplier": "1"
+        }
+      },
+      "auto_play": true,
+      "mute_sound": false,
+      "casting": true,
+      "trick_play": false
+    }
+  }
