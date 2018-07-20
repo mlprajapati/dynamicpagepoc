@@ -1,13 +1,16 @@
-var config={};
-var platform={};
-var currentPage={};
-$.when(engine.getMainJson()).then(function(data){
-    config = data;
-    $.when(engine.getPlatformJson('appleTv')).then(function(data2){
-        platform = data2;
-        var page = platform.pages.find(page=> page['Page-Name'] ==='Home Page')
-        $.when(engine.getPlatformJson(page['Page-ID'])).then(function(data3){
-            currentPage = data3;
+
+$(document).ready(function(){
+    $.when(engine.getMainJson()).then(function(data){
+        app.setConfig(data);
+        $.when(engine.getPlatformJson('appleTv')).then(function(data2){
+            app.setPlatform(data2);
+            var page = platform.pages.find(page=> page['Page-Name'] ==='Home Page')
+            app.setCurrentPage(page);
+            $.when(app.getPageData(page['Page-ID'])).then(function(data3){
+                app.setPageData(data3);
+                factory.init();
+            });
         });
     });
 });
+

@@ -1,21 +1,21 @@
 
-var page = {};
+var factory = {};
 
-page.getPageLayout = function(dataObj, pageId) {
+factory.getPageLayout = function(dataObj, pageId) {
 
     let pageType = 'appleTv';
     let moduleArr = dataObj['moduleList'];
     let html = '';
 
-    html += page.getNavigation(mainContent);
+    html += factory.getNavigation(mainContent);
 
     moduleArr.forEach(element => {
         
         switch(element.blockName) {
-            case 'carousel01': html += page.carousalTemplate(element, pageType);
+            case 'carousel01': html += factory.carousalTemplate(element, pageType);
                         break;
 
-            case 'footer01': html += page.footerTemplate(element, pageType, mainContent);
+            case 'footer01': html += factory.footerTemplate(element, pageType, mainContent);
                         break;
         }
         
@@ -24,7 +24,7 @@ page.getPageLayout = function(dataObj, pageId) {
     return html;
 }
 
-page.getStyles = function(obj) {
+factory.getStyles = function(obj) {
     let style = 'style="';
 
     if (obj['yAxis']) {
@@ -61,7 +61,7 @@ page.getStyles = function(obj) {
 }
 
 
-page.getNavigation = function(content) {
+factory.getNavigation = function(content) {
     
     let html = '<div class="topnav" id="myTopnav" style="overflow: hidden; background-color: #333; height: 20px;">';
 
@@ -85,16 +85,37 @@ page.getNavigation = function(content) {
 }
 
 
-page.carousalTemplate = function(obj, pageType) {
-    let html = '<div id="carousal"' + page.getStyles(obj.layout[pageType]) + '>';
+factory.carousalTemplate = function(obj, pageType) {
+    let html = '<div id="carousal"' + factory.getStyles(obj.layout[pageType]) + '>';
         html += '</div>';
 
         return html;
 }
 
-page.footerTemplate = function(obj, pageType, content) {
-    let html = '<div id="footer"' + page.getStyles(obj.layout[pageType]) + '>';
-        html += '</div>';
+// factory.footerTemplate = function(obj, pageType, content) {
+//     let html = '<div id="footer"' + factory.getStyles(obj.layout[pageType]) + '>';
+//         html += '</div>';
 
+//         return html;
+// }
+factory.headerTemplate = function(){
+    let html = '<div id="header" style="dispaly:flex;position:fixed;top:0px;width:100%;height:58px;border: 1px solid red;">';
+        html += '</div>';
         return html;
+}
+factory.contentTemplate = function(){
+    let html = '<div id="content" style="dispaly:flex;position:fixed;top:58px;width:100%;height:calc(100vh - 58px);border: 1px solid blue;">';
+        html += '</div>';
+        return html;
+}
+factory.footerTemplate = function(){
+    let html = '<div id="footer" style="dispaly:flex;position:fixed;bottom:0px;width:100%;height:58px;border: 1px solid green;">';
+        html += '</div>';
+        return html;
+}
+factory.init = function(){
+    $('#container').append(factory.headerTemplate());
+    $('#container').append(factory.contentTemplate());
+    $('#container').append(factory.footerTemplate());
+
 }

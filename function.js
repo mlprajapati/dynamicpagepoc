@@ -1,3 +1,7 @@
+var config={};
+var platform={};
+var currentPage={};
+var pageData={};
 var loadData = function(url,type,data){
     var jqXhr = $.ajax({
         url: url,
@@ -6,3 +10,31 @@ var loadData = function(url,type,data){
     });
       return jqXhr;
 };
+var app = {
+    setConfig:function(value){
+        config = value;
+    },
+    getConfig:function(){
+        return config;
+    },
+    setPlatform:function(value){
+        platform = value;
+    },
+    getPlatform:function(){
+        return platform;
+    },
+    setCurrentPage: function(value){
+        currentPage = value;
+    },
+    getCurrentPage: function(){
+        return currentPage;
+    },
+    setPageData: function(value){
+        pageData = value;
+    },
+    getPageData: function(pageid){
+        return engine.getPlatformJson(pageid);
+
+    }
+
+}
