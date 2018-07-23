@@ -193,7 +193,7 @@ factory.contentTemplate = function(){
 
     let html = '<div id="content" style="display:block;position:relative; top: 40px; width:100%;height:calc(100vh - 58px);txt-align:center;">';
 
-    html += '<div class="tab" style="overflow: hidden; text-align: center;position: fixed;">';
+    html += '<div class="tab" style="overflow: hidden; text-align: center;position: fixed;margin: auto; left: 0px; right: 0px;">';
 
     platform.navigation.tabBar.forEach((element, index) => {
         let classTxt = '';
