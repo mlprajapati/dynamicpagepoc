@@ -11,7 +11,7 @@ factory.getPageLayout = function(divId) {
 
 
     app.getPageData(currentPage['Page-ID']).done(resp => {
-        let pageType = currentPalform;
+        let pageType = patformSortKey;
         let moduleArr = resp['moduleList'];
         
 
