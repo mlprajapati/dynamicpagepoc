@@ -9,13 +9,14 @@ var engine = {
         }
         if (localStorage.getItem(identity + "_main.json")) {
             let config = JSON.parse(localStorage.getItem(identity + "_main.json"));
-            if (config['version'] == applicationVerion) {
+            if (config['version'] == applicationVerion && localStorage.getItem(identity + "currentPlatform") == currentPalform) {
                 return $.when(config);
             } else{
                 isVersionChanges =true;
             }
         } 
         engine.removeAllDataFromCache(identity + '_', '');
+        localStorage.setItem(identity + "currentPlatform",currentPalform);
         return loadData(url, 'GET', {});
            
     },
