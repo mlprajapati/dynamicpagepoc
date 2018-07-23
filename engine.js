@@ -11,8 +11,10 @@ var engine = {
             let config = JSON.parse(localStorage.getItem(identity + "_main.json"));
             if (config['version'] == applicationVerion) {
                 return $.when(config);
+            } else{
+                isVersionChanges =true;
             }
-        }
+        } 
         engine.removeAllDataFromCache(identity + '_', '');
         return loadData(url, 'GET', {});
            

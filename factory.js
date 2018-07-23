@@ -240,8 +240,11 @@ factory.setFont = function(){
 
 factory.init = function(){
     $('body').append(factory.globalCSS());
-    engine.downloadsPages();
-    engine.downloadsBlocks();
+    if(isVersionChanges){
+        engine.downloadsPages();
+        engine.downloadsBlocks();
+    }
+   
     $('#container').append(factory.headerTemplate());
     $('#container').append(factory.contentTemplate());
     let firstTab = app.getPlatform().navigation.tabBar[0].title;
