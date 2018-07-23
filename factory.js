@@ -23,7 +23,7 @@ factory.getPageLayout = function(divId) {
                             app.getComponent(element.blockName).done(resp => {
                                 $('#'+element.id).append(resp);                    
                             }).fail((xhr) => {
-                                $('#'+element.id).append('<h2>'+ element.blockName +' not found!</h2>');
+                                //$('#'+element.id).append('<h2>'+ element.blockName +' not found!</h2>');
                             });
                             break;
 
@@ -32,7 +32,7 @@ factory.getPageLayout = function(divId) {
                             app.getComponent(element.blockName).done(resp => {
                                     $('#'+element.id).append(resp);    
                             }).fail((xhr) => {
-                                $('#'+element.id).append('<h2>'+ element.blockName +' not found!</h2>');
+                                //$('#'+element.id).append('<h2>'+ element.blockName +' not found!</h2>');
                             });
                             break;
 
@@ -41,7 +41,7 @@ factory.getPageLayout = function(divId) {
                             app.getComponent(element.blockName).done(resp => {
                                     $('#'+element.id).append(resp);    
                             }).fail((xhr) => {
-                                $('#'+element.id).append('<h2>'+ element.blockName +' not found!</h2>');
+                                //$('#'+element.id).append('<h2>'+ element.blockName +' not found!</h2>');
                             });
                             break;
 
@@ -106,7 +106,7 @@ factory.getStyles = function(obj, customStyle) {
  * @param {*} pageType 
  */
 factory.carousalTemplate = function(obj, pageType) {
-    let html = '<div id="'+ obj.id +'"' + factory.getStyles(obj.layout[pageType.toLowerCase()], null) + '>';
+    let html = '<div id="'+ obj.id +'" class="' + obj.blockName + '"' + factory.getStyles(obj.layout[pageType.toLowerCase()], null) + '>';
 
     html += '</div>';
     return html;
@@ -118,7 +118,7 @@ factory.carousalTemplate = function(obj, pageType) {
  * @param {*} pageType 
  */
 factory.continousTemplate = function(obj, pageType) {
-    let html = '<div id="'+ obj.id +'"' + factory.getStyles(obj.layout[pageType.toLowerCase()], null) + '>';
+    let html = '<div id="'+ obj.id +'" class="' + obj.blockName + '"' + factory.getStyles(obj.layout[pageType.toLowerCase()], null) + '>';
 
     html += '</div>';
     return html;
@@ -136,7 +136,7 @@ factory.trayTemplate = function(obj, pageType) {
     }
 
     let html = '<div id="'+ obj.id +'" class="tray col-sm-' + obj.settings.columns.tablet + ' cold-md-' + obj.settings.columns.desktop  + ' cold-xs-' + obj.settings.columns.mobile  +'"' + factory.getStyles(obj.layout[pageType.toLowerCase()], customStyle) + '>';
-
+        html += '<img src="vendor/img/tray.jpg" alt="">'
     html += '</div>';
     return html;
 }

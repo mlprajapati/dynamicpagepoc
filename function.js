@@ -1,4 +1,4 @@
-var currentPalform ='appleTv';
+var currentPalform ='fireTv';
 var config={};
 var platform={};
 var currentPage={};
@@ -8,7 +8,7 @@ var isLocal=true;
 var applicationVerion='0.9422.0';
 var isVersionChanges = false;
 var identity ='poc1';
-var patformSortKey ='appletv';
+var patformSortKey ='ftv';
 var loadData = function(url,type,data){
     var jqXhr = $.ajax({
         url: url,
