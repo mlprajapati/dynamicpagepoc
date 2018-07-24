@@ -9,9 +9,9 @@ factory.getPageLayout = function(divId) {
     let currentPage = app.getCurrentPage();
     let html = '';
 
-
+    //load page data from cache
     app.getPageData(currentPage['Page-ID']).done(resp => {
-        let pageType = patformSortKey;
+        let pageType = settingsObj.patformSortKey;
         let moduleArr = resp['moduleList'];
         
 
@@ -180,7 +180,7 @@ factory.headerTemplate = function(){
     //user links
     html += '<div class="user">';
     platform.navigation.user.forEach(element => {
-        if (element.accessLevels.loggedIn == isLogin) {
+        if (element.accessLevels.loggedIn == settingsObj.isLogin) {
             html += '<a href="' + element.url + '">'+ element.title + '</a>';
         }
     }); 
@@ -289,7 +289,7 @@ factory.setFont = function(){
  */
 factory.init = function(){
     $('body').append(factory.globalCSS());
-    if(isVersionChanges){
+    if(settingsObj.isVersionChanges){
         engine.downloadsPages();
         engine.downloadsBlocks();
     }

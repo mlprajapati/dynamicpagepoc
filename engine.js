@@ -2,31 +2,31 @@ var engine = {
 
     getMainJson: function () {
         let url = '';
-        if (isLocal) {
-            url = 'data/main.json'
+        if (settingsObj.isLocal) {
+            url = settingsObj.mainDataUrl.local;
         } else {
-            url = 'http://servername.com/main.json';
+            url = settingsObj.mainDataUrl.prod;
         }
-        if (localStorage.getItem(identity + "_main.json")) {
-            let config = JSON.parse(localStorage.getItem(identity + "_main.json"));
-            if (config['version'] == applicationVerion && localStorage.getItem(identity + "currentPlatform") == currentPalform) {
+        if (localStorage.getItem(settingsObj.identity + "_main.json")) {
+            let config = JSON.parse(localStorage.getItem(settingsObj.identity + "_main.json"));
+            if (config['version'] == settingsObj.applicationVerion && localStorage.getItem(settingsObj.identity + "currentPlatform") == settingsObj.currentPalform) {
                 return $.when(config);
             } else{
-                isVersionChanges =true;
+                settingsObj.isVersionChanges =true;
             }
         } 
-        engine.removeAllDataFromCache(identity + '_', '');
-        localStorage.setItem(identity + "currentPlatform",currentPalform);
+        engine.removeAllDataFromCache(settingsObj.identity + '_', '');
+        localStorage.setItem(settingsObj.identity + "currentPlatform",settingsObj.currentPalform);
         return loadData(url, 'GET', {});
            
     },
     getPlatformJson: function (platform) {
   
-        if (localStorage.getItem(identity + "_" + platform + ".json")) {
-            return $.when(JSON.parse(localStorage.getItem(identity + "_" + platform + ".json")));
+        if (localStorage.getItem(settingsObj.identity + "_" + platform + ".json")) {
+            return $.when(JSON.parse(localStorage.getItem(settingsObj.identity + "_" + platform + ".json")));
         } else {
             let url = '';
-            if (isLocal) {
+            if (settingsObj.isLocal) {
                 url = 'data/' + platform + '.json'
             } else {
                 url = app.getConfig()[platform];
@@ -37,11 +37,11 @@ var engine = {
 
     },
     getPageJson: function (pageId) {
-        if (localStorage.getItem(identity + "_" + pageId + ".json")) {
-            return $.when(JSON.parse(localStorage.getItem(identity + "_" + pageId + ".json")));
+        if (localStorage.getItem(settingsObj.identity + "_" + settingsObj.pageId + ".json")) {
+            return $.when(JSON.parse(localStorage.getItem(settingsObj.identity + "_" + pageId + ".json")));
         } else {
             let url = '';
-            if (isLocal) {
+            if (settingsObj.isLocal) {
                 url = 'data/' + pageId + '.json'
             } else {
                 url = app.getPlatform().pages.find(page => page['Page-ID'] === pageId)['Page-ID'];
@@ -60,7 +60,7 @@ var engine = {
         for (let i in blocks) {
             // you can push  any aysnc method handler
             var url = blocksBaseUrl + '/' + blocks[i]['name'];
-            if (!localStorage.getItem(identity + "_" + blocks[i]['name'] + ".json")) {
+            if (!localStorage.getItem(settingsObj.identity + "_" + blocks[i]['name'] + ".json")) {
                 async_request.push($.ajax({
                     url: url, // your url
                     method: 'GET', // method GET or POST
@@ -68,7 +68,7 @@ var engine = {
                     success: function (data) {
                         console.log('success of ajax response')
                         responses.push(data);
-                        localStorage.setItem(identity + "_" + blocks[i]['name'] + ".json",JSON.stringify(data));
+                        localStorage.setItem(settingsObj.identity + "_" + blocks[i]['name'] + ".json",JSON.stringify(data));
                     }
                 }));
             }
@@ -87,7 +87,7 @@ var engine = {
         for (let i in pages) {
             // you can push  any aysnc method handler
             var url = pages[i]['Page-UI'];
-            if (!localStorage.getItem(identity + "_" + pages[i]['Page-ID'] + ".json")) {
+            if (!localStorage.getItem(settingsObj.identity + "_" + pages[i]['Page-ID'] + ".json")) {
                 async_request.push($.ajax({
                     url: url, // your url
                     method: 'GET', // method GET or POST
@@ -95,7 +95,7 @@ var engine = {
                     success: function (data) {
                         console.log('success of ajax response')
                         responses.push(data);
-                        localStorage.setItem(identity + "_" + pages[i]['Page-ID'] + ".json",JSON.stringify(data))
+                        localStorage.setItem(settingsObj.identity + "_" + pages[i]['Page-ID'] + ".json",JSON.stringify(data))
                     }
                 }));
             }
@@ -107,12 +107,12 @@ var engine = {
         });
     },
     getComponentJson(comp){
-        if (localStorage.getItem(identity + "_" + comp + ".json")) {
-            return $.when(JSON.parse(localStorage.getItem(identity + "_" + comp + ".json")));
+        if (localStorage.getItem(settingsObj.identity + "_" + comp + ".json")) {
+            return $.when(JSON.parse(localStorage.getItem(settingsObj.identity + "_" + comp + ".json")));
         } else {
             var blocksBaseUrl = app.getPlatform().blocksBaseUrl;
             let url = '';
-            if (isLocal) {
+            if (settingsObj.isLocal) {
                 url = 'data/' + comp + '.json'
             } else {
                 url = blocksBaseUrl+'/'+ comp;
